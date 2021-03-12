@@ -3,9 +3,9 @@ package tran.server.modules.sys.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import common.validator.group.AddGroup;
-import common.validator.group.UpdateGroup;
 import lombok.Data;
+import tran.server.common.validator.group.AddGroup;
+import tran.server.common.validator.group.UpdateGroup;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

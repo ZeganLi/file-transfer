@@ -1,7 +1,7 @@
 package tran.server.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import common.utils.MapUtils;
+import tran.server.common.utils.MapUtils;
 import tran.server.modules.sys.dao.SysUserRoleDao;
 import tran.server.modules.sys.entity.SysUserRoleEntity;
 import tran.server.modules.sys.service.SysUserRoleService;

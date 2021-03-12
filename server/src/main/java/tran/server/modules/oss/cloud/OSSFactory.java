@@ -1,9 +1,9 @@
 package tran.server.modules.oss.cloud;
 
 
-import common.utils.ConfigConstant;
-import common.utils.Constant;
-import common.utils.SpringContextUtils;
+import tran.server.common.utils.ConfigConstant;
+import tran.server.common.utils.Constant;
+import tran.server.common.utils.SpringContextUtils;
 import tran.server.modules.sys.service.SysConfigService;
 
 /**

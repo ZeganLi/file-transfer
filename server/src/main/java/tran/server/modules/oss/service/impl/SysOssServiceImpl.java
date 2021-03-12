@@ -2,8 +2,8 @@ package tran.server.modules.oss.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import common.utils.PageUtils;
-import common.utils.Query;
+import tran.server.common.utils.PageUtils;
+import tran.server.common.utils.Query;
 import tran.server.modules.oss.dao.SysOssDao;
 import tran.server.modules.oss.entity.SysOssEntity;
 import tran.server.modules.oss.service.SysOssService;

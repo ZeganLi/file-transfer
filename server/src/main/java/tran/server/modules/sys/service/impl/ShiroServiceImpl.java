@@ -1,6 +1,6 @@
 package tran.server.modules.sys.service.impl;
 
-import common.utils.Constant;
+import tran.server.common.utils.Constant;
 import tran.server.modules.sys.dao.SysMenuDao;
 import tran.server.modules.sys.dao.SysUserDao;
 import tran.server.modules.sys.dao.SysUserTokenDao;

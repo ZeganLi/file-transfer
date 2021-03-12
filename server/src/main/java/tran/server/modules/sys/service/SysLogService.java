@@ -2,7 +2,7 @@ package tran.server.modules.sys.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import common.utils.PageUtils;
+import tran.server.common.utils.PageUtils;
 import tran.server.modules.sys.entity.SysLogEntity;
 
 import java.util.Map;

@@ -1,7 +1,7 @@
 package tran.server.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import common.utils.R;
+import tran.server.common.utils.R;
 import tran.server.modules.sys.dao.SysUserTokenDao;
 import tran.server.modules.sys.entity.SysUserTokenEntity;
 import tran.server.modules.sys.oauth2.TokenGenerator;

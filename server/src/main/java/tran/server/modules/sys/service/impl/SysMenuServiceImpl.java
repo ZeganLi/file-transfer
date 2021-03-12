@@ -2,8 +2,8 @@ package tran.server.modules.sys.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import common.utils.Constant;
-import common.utils.MapUtils;
+import tran.server.common.utils.Constant;
+import tran.server.common.utils.MapUtils;
 import tran.server.modules.sys.dao.SysMenuDao;
 import tran.server.modules.sys.entity.SysMenuEntity;
 import tran.server.modules.sys.service.SysMenuService;

@@ -1,14 +1,14 @@
 package tran.server.modules.job.controller;
 
-import common.annotation.SysLog;
-import common.utils.PageUtils;
-import common.utils.R;
-import common.validator.ValidatorUtils;
-import tran.server.modules.job.entity.ScheduleJobEntity;
-import tran.server.modules.job.service.ScheduleJobService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tran.server.common.annotation.SysLog;
+import tran.server.common.utils.PageUtils;
+import tran.server.common.utils.R;
+import tran.server.common.validator.ValidatorUtils;
+import tran.server.modules.job.entity.ScheduleJobEntity;
+import tran.server.modules.job.service.ScheduleJobService;
 
 import java.util.Map;
 

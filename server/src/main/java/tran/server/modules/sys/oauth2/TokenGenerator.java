@@ -1,6 +1,6 @@
 package tran.server.modules.sys.oauth2;
 
-import common.exception.RRException;
+import tran.server.common.exception.RRException;
 
 import java.security.MessageDigest;
 import java.util.UUID;

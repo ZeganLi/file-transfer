@@ -1,7 +1,7 @@
 package tran.server.modules.job.controller;
 
-import common.utils.PageUtils;
-import common.utils.R;
+import tran.server.common.utils.PageUtils;
+import tran.server.common.utils.R;
 import tran.server.modules.job.entity.ScheduleJobLogEntity;
 import tran.server.modules.job.service.ScheduleJobLogService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

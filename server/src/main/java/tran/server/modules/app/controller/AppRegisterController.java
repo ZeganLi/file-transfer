@@ -1,8 +1,8 @@
 package tran.server.modules.app.controller;
 
 
-import common.utils.R;
-import common.validator.ValidatorUtils;
+import tran.server.common.utils.R;
+import tran.server.common.validator.ValidatorUtils;
 import tran.server.modules.app.entity.UserEntity;
 import tran.server.modules.app.form.RegisterForm;
 import tran.server.modules.app.service.UserService;

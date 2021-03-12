@@ -5,8 +5,8 @@ import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
-import common.exception.RRException;
 import org.apache.commons.io.IOUtils;
+import tran.server.common.exception.RRException;
 
 import java.io.IOException;
 import java.io.InputStream;

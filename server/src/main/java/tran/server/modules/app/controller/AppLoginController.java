@@ -2,7 +2,7 @@ package tran.server.modules.app.controller;
 
 
 import com.baomidou.mybatisplus.extension.api.R;
-import common.validator.ValidatorUtils;
+import tran.server.common.validator.ValidatorUtils;
 import tran.server.modules.app.form.LoginForm;
 import tran.server.modules.app.service.UserService;
 import tran.server.modules.app.utils.JwtUtils;

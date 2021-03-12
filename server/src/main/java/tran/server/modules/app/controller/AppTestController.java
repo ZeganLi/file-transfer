@@ -1,7 +1,7 @@
 package tran.server.modules.app.controller;
 
 
-import common.utils.R;
+import tran.server.common.utils.R;
 import tran.server.modules.app.annotation.Login;
 import tran.server.modules.app.annotation.LoginUser;
 import tran.server.modules.app.entity.UserEntity;

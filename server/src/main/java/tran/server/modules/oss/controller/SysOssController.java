@@ -1,15 +1,15 @@
 package tran.server.modules.oss.controller;
 
 import com.google.gson.Gson;
-import common.exception.RRException;
-import common.utils.ConfigConstant;
-import common.utils.Constant;
-import common.utils.PageUtils;
-import common.utils.R;
-import common.validator.ValidatorUtils;
-import common.validator.group.AliyunGroup;
-import common.validator.group.QcloudGroup;
-import common.validator.group.QiniuGroup;
+import tran.server.common.exception.RRException;
+import tran.server.common.utils.ConfigConstant;
+import tran.server.common.utils.Constant;
+import tran.server.common.utils.PageUtils;
+import tran.server.common.utils.R;
+import tran.server.common.validator.ValidatorUtils;
+import tran.server.common.validator.group.AliyunGroup;
+import tran.server.common.validator.group.QcloudGroup;
+import tran.server.common.validator.group.QiniuGroup;
 import tran.server.modules.oss.cloud.CloudStorageConfig;
 import tran.server.modules.oss.cloud.OSSFactory;
 import tran.server.modules.oss.entity.SysOssEntity;

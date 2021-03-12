@@ -1,6 +1,6 @@
 package tran.server.modules.job.utils;
 
-import common.utils.SpringContextUtils;
+import tran.server.common.utils.SpringContextUtils;
 import tran.server.modules.job.entity.ScheduleJobEntity;
 import tran.server.modules.job.entity.ScheduleJobLogEntity;
 import tran.server.modules.job.service.ScheduleJobLogService;

@@ -1,13 +1,13 @@
 package tran.server.modules.sys.controller;
 
-import common.annotation.SysLog;
-import common.utils.Constant;
-import common.utils.PageUtils;
-import common.utils.R;
-import common.validator.Assert;
-import common.validator.ValidatorUtils;
-import common.validator.group.AddGroup;
-import common.validator.group.UpdateGroup;
+import tran.server.common.annotation.SysLog;
+import tran.server.common.utils.Constant;
+import tran.server.common.utils.PageUtils;
+import tran.server.common.utils.R;
+import tran.server.common.validator.Assert;
+import tran.server.common.validator.ValidatorUtils;
+import tran.server.common.validator.group.AddGroup;
+import tran.server.common.validator.group.UpdateGroup;
 import tran.server.modules.sys.entity.SysUserEntity;
 import tran.server.modules.sys.form.PasswordForm;
 import tran.server.modules.sys.service.SysUserRoleService;
@@ -65,7 +65,7 @@ public class SysUserController extends AbstractController {
 	@PostMapping("/password")
 	public R password(@RequestBody PasswordForm form){
 		Assert.isBlank(form.getNewPassword(), "新密码不为能空");
-		
+
 		//sha256加密
 		String password = new Sha256Hash(form.getPassword(), getUser().getSalt()).toHex();
 		//sha256加密

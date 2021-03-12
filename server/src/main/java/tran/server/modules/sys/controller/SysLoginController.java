@@ -1,6 +1,6 @@
 package tran.server.modules.sys.controller;
 
-import common.utils.R;
+import tran.server.common.utils.R;
 import tran.server.modules.sys.entity.SysUserEntity;
 import tran.server.modules.sys.form.SysLoginForm;
 import tran.server.modules.sys.service.SysCaptchaService;

@@ -1,7 +1,7 @@
 package tran.server.modules.sys.controller;
 
-import common.utils.PageUtils;
-import common.utils.R;
+import tran.server.common.utils.PageUtils;
+import tran.server.common.utils.R;
 import tran.server.modules.sys.service.SysLogService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

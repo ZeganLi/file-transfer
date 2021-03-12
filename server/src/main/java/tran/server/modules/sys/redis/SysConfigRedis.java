@@ -1,8 +1,8 @@
 package tran.server.modules.sys.redis;
 
 
-import common.utils.RedisKeys;
-import common.utils.RedisUtils;
+import tran.server.common.utils.RedisKeys;
+import tran.server.common.utils.RedisUtils;
 import tran.server.modules.sys.entity.SysConfigEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

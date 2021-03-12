@@ -1,8 +1,8 @@
 package tran.server.modules.app.interceptor;
 
 
-import common.exception.RRException;
 import io.jsonwebtoken.Claims;
+import tran.server.common.exception.RRException;
 import tran.server.modules.app.utils.JwtUtils;
 import tran.server.modules.app.annotation.Login;
 import org.apache.commons.lang.StringUtils;

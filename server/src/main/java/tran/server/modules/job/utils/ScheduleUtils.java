@@ -1,7 +1,7 @@
 package tran.server.modules.job.utils;
 
-import common.exception.RRException;
-import common.utils.Constant;
+import tran.server.common.exception.RRException;
+import tran.server.common.utils.Constant;
 import tran.server.modules.job.entity.ScheduleJobEntity;
 import org.quartz.*;
 

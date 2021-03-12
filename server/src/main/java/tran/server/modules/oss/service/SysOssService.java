@@ -1,7 +1,7 @@
 package tran.server.modules.oss.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import common.utils.PageUtils;
+import tran.server.common.utils.PageUtils;
 import tran.server.modules.oss.entity.SysOssEntity;
 
 import java.util.Map;

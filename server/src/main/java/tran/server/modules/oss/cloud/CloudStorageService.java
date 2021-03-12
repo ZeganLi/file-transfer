@@ -1,7 +1,7 @@
 package tran.server.modules.oss.cloud;
 
-import common.utils.DateUtils;
 import org.apache.commons.lang.StringUtils;
+import tran.server.common.utils.DateUtils;
 
 import java.io.InputStream;
 import java.util.Date;

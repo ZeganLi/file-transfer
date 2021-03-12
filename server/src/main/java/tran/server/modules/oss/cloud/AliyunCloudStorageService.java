@@ -1,7 +1,7 @@
 package tran.server.modules.oss.cloud;
 
 import com.aliyun.oss.OSSClient;
-import common.exception.RRException;
+import tran.server.common.exception.RRException;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

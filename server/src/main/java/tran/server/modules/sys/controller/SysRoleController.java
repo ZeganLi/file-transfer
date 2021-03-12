@@ -1,10 +1,10 @@
 package tran.server.modules.sys.controller;
 
-import common.annotation.SysLog;
-import common.utils.Constant;
-import common.utils.PageUtils;
-import common.utils.R;
-import common.validator.ValidatorUtils;
+import tran.server.common.annotation.SysLog;
+import tran.server.common.utils.Constant;
+import tran.server.common.utils.PageUtils;
+import tran.server.common.utils.R;
+import tran.server.common.validator.ValidatorUtils;
 import tran.server.modules.sys.entity.SysRoleEntity;
 import tran.server.modules.sys.service.SysRoleMenuService;
 import tran.server.modules.sys.service.SysRoleService;
@@ -76,22 +76,7 @@ public class SysRoleController extends AbstractController {
 		
 		return R.ok().put("role", role);
 	}
-	
-	/**
-	 * 保存角色
-	 */
-	@SysLog("保存角色")
-	@PostMapping("/save")
-	@RequiresPermissions("sys:role:save")
-	public R save(@RequestBody SysRoleEntity role){
-		ValidatorUtils.validateEntity(role);
-		
-		role.setCreateUserId(getUserId());
-		sysRoleService.saveRole(role);
-		
-		return R.ok();
-	}
-	
+
 	/**
 	 * 修改角色
 	 */
@@ -100,13 +85,28 @@ public class SysRoleController extends AbstractController {
 	@RequiresPermissions("sys:role:update")
 	public R update(@RequestBody SysRoleEntity role){
 		ValidatorUtils.validateEntity(role);
-		
+
 		role.setCreateUserId(getUserId());
 		sysRoleService.update(role);
-		
+
 		return R.ok();
 	}
-	
+
+	/**
+	 * 保存角色
+	 */
+	@SysLog("保存角色")
+	@PostMapping("/save")
+	@RequiresPermissions("sys:role:save")
+	public R save(@RequestBody SysRoleEntity role){
+		ValidatorUtils.validateEntity(role);
+
+		role.setCreateUserId(getUserId());
+		sysRoleService.saveRole(role);
+
+		return R.ok();
+	}
+
 	/**
 	 * 删除角色
 	 */

@@ -1,7 +1,7 @@
 package tran.server.modules.job.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import common.utils.PageUtils;
+import tran.server.common.utils.PageUtils;
 import tran.server.modules.job.entity.ScheduleJobEntity;
 
 import java.util.Map;

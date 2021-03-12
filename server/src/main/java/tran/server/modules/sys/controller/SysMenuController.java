@@ -1,9 +1,9 @@
 package tran.server.modules.sys.controller;
 
-import common.annotation.SysLog;
-import common.exception.RRException;
-import common.utils.Constant;
-import common.utils.R;
+import tran.server.common.annotation.SysLog;
+import tran.server.common.exception.RRException;
+import tran.server.common.utils.Constant;
+import tran.server.common.utils.R;
 import tran.server.modules.sys.entity.SysMenuEntity;
 import tran.server.modules.sys.service.ShiroService;
 import tran.server.modules.sys.service.SysMenuService;

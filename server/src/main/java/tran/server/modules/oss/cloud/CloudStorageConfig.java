@@ -4,6 +4,9 @@ package tran.server.modules.oss.cloud;
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
+import tran.server.common.validator.group.AliyunGroup;
+import tran.server.common.validator.group.QcloudGroup;
+import tran.server.common.validator.group.QiniuGroup;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

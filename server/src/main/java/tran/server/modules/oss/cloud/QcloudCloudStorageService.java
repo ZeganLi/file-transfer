@@ -6,8 +6,8 @@ import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
 import com.qcloud.cos.request.UploadFileRequest;
 import com.qcloud.cos.sign.Credentials;
-import common.exception.RRException;
 import org.apache.commons.io.IOUtils;
+import tran.server.common.exception.RRException;
 
 import java.io.IOException;
 import java.io.InputStream;
