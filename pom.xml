@@ -7,6 +7,8 @@
     <version>1.0.0</version>
     <modules>
         <module>common</module>
+        <module>server</module>
+        <module>generator</module>
     </modules>
     <packaging>pom</packaging>
 
