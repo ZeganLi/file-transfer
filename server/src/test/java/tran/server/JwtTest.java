@@ -1,6 +1,6 @@
 package tran.server;
 
-import tran.server.modules.app.utils.JwtUtils;
+import tran.modules.app.utils.JwtUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

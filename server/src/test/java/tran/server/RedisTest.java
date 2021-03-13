@@ -1,7 +1,7 @@
 package tran.server;
 
-import tran.server.common.utils.RedisUtils;
-import tran.server.modules.sys.entity.SysUserEntity;
+import tran.common.utils.RedisUtils;
+import tran.modules.sys.entity.SysUserEntity;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
