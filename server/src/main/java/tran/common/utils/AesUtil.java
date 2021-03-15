@@ -12,7 +12,7 @@ public class AesUtil {
 	public static String randomKey = RandomStringUtils.randomAlphanumeric(16);
 	public static final String KEY = "KWR8qVEVyxpNTV0R";
 	public static String NewKey = null;
-	public static Map<Integer, String> clientKey = new HashMap<Integer, String>();
+	public static Map<Long, String> clientKey = new HashMap<>();
 	/**
 	 * @param data 要加密的数据
 	 * @param key 加密的密码，必须是16位。否则会报错。

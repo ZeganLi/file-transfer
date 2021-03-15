@@ -6,8 +6,8 @@ import java.io.UnsupportedEncodingException;
 import static tran.server.io.netty.decoder.FTProtocolDecoder.PACKAGE_TYPE_CLIENT_REGISTER_ACK;
 
 public class RegisterClientAckPackage extends FTPackage {
-    private short code;
-    private int clientId;
+    private Long code;
+    private Long clientId;
     private short nameLength;
     private byte[] clientName;
 
@@ -19,26 +19,26 @@ public class RegisterClientAckPackage extends FTPackage {
         this.setPackageLength((short)(10 + this.getNameLength()));
         ByteBuf buffer = Unpooled.directBuffer(this.getPackageLength());
         buffer.writeShort(this.getPackageType());
-        buffer.writeShort(this.getCode());
-        buffer.writeInt(this.getClientId());
+        buffer.writeLong(this.getCode());
+        buffer.writeLong(this.getClientId());
         buffer.writeShort(this.getNameLength());
         buffer.writeBytes(this.getClientName());
         return buffer;
     }
 
-    public int getClientId() {
+    public Long getClientId() {
         return this.clientId;
     }
 
-    public void setClientId(int clientId) {
+    public void setClientId(Long clientId) {
         this.clientId = clientId;
     }
 
-    public short getCode() {
+    public Long getCode() {
         return this.code;
     }
 
-    public void setCode(short code) {
+    public void setCode(Long code) {
         this.code = code;
     }
 
