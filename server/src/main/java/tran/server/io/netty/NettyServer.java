@@ -13,7 +13,7 @@ import tran.server.io.netty.handler.FileTransferHandler;
  */
 @Slf4j
 public class NettyServer {
-    private static EventLoopGroup group = new NioEventLoopGroup();
+    private static final EventLoopGroup group = new NioEventLoopGroup();
 
     public NettyServer() {
     }
@@ -38,7 +38,6 @@ public class NettyServer {
                                 ch.pipeline().addLast(ftProtocolDecoder, fileTransferHandler);
                             }
                         });
-
 
                 b.bind(port).sync().channel().closeFuture().await();
             } catch (Exception var7) {

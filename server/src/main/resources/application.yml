@@ -8,6 +8,8 @@ server:
   connection-timeout: 5000ms
   servlet:
     context-path: /tran-server
+ft:
+  port: 9000
 
 spring:
   # 环境 dev|test|prod

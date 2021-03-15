@@ -1,24 +1,17 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package tran.server.io.netty.handler;
 
-import com.aww.common.utils.AesUtil;
-import com.aww.fts.modules.transfer.model.Client;
-import com.aww.fts.modules.transfer.service.ClientService;
-import com.aww.fts.socket.netty.model.FTPackage;
-import com.aww.fts.socket.netty.model.RegisterClientAckPackage;
-import com.aww.fts.socket.netty.model.RegisterClientPackage;
 import io.netty.channel.ChannelHandlerContext;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import tran.common.utils.AesUtil;
+import tran.server.io.netty.model.FTPackage;
+import tran.server.io.netty.model.RegisterClientAckPackage;
+import tran.server.io.netty.model.RegisterClientPackage;
 
 @Component
+@Slf4j
 public class RegisterClientBasePackageHandler extends BasePackageHandler {
-    private static Logger logger = Logger.getLogger(RegisterClientBasePackageHandler.class);
     @Autowired
     ClientService clientService;
 
@@ -33,7 +26,7 @@ public class RegisterClientBasePackageHandler extends BasePackageHandler {
     @Override
     public void handle(ChannelHandlerContext ctx, FTPackage ftpackage) {
         try {
-            logger.debug("RegisterClientPackageHandler");
+            log.debug("RegisterClientPackageHandler");
             RegisterClientPackage registerClientPackage = (RegisterClientPackage) ftpackage;
 
             Client client = this.clientService.getClientByMAC(registerClientPackage.getMac());

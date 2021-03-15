@@ -1,6 +1,5 @@
 package tran.server.io.netty.decoder;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.handler.codec.MessageToMessageDecoder;
@@ -10,6 +9,8 @@ import tran.server.io.netty.model.*;
 import java.util.List;
 
 /**
+ * 文件传输解码器
+ *
  * @author mrliz
  */
 @Slf4j
@@ -58,8 +59,8 @@ public class FTProtocolDecoder extends MessageToMessageDecoder<DatagramPacket> {
     }
 
     @Override
-    protected void decode(ChannelHandlerContext ctx, DatagramPacket msg, List out) throws Exception {
-        int package_len = ((ByteBuf)msg.content()).readableBytes();
+    protected void decode(ChannelHandlerContext ctx, DatagramPacket msg, List out) {
+        int package_len = msg.content().readableBytes();
 
         //----------------------------------------------------------------
         // 消息包的头部必定有4个字节，表示消息包的类型和消息包的大小
@@ -68,8 +69,8 @@ public class FTProtocolDecoder extends MessageToMessageDecoder<DatagramPacket> {
             return;
         }
 
-        short type = ((ByteBuf)msg.content()).readShort();
-        short length = ((ByteBuf)msg.content()).readShort();
+        short type = msg.content().readShort();
+        short length = msg.content().readShort();
 
         //----------------------------------------------------------------
         // 接收的消息大小不能小于消息包的大小
@@ -85,39 +86,38 @@ public class FTProtocolDecoder extends MessageToMessageDecoder<DatagramPacket> {
             FTPackage ftPackage;
 
             if (type == PACKAGE_TYPE_CLIENT_REGISTER) {
-                ftPackage = new RegisterClientPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new RegisterClientPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_UPLOAD_FILE) {
-                ftPackage = new UploadNewFilePackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new UploadNewFilePackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_UPLOAD_BLOCK_FILE) {
-                ftPackage = new UploadBlockFilePackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new UploadBlockFilePackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_UPLOAD_BLOCK_DATA) {
-                ftPackage = new UploadDataPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new UploadDataPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_UPLOAD_BLOCK_FILE_FINISH) {
-                ftPackage = new UploadPartitionFinishPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new UploadPartitionFinishPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_UPLOAD_FILE_FINISH) {
-                ftPackage = new UploadFileFinishPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new UploadFileFinishPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_UPLOAD_CANCEL) {
-                ftPackage = new UploadCancelPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new UploadCancelPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_DOWNLOAD_REQUEST) {
-                ftPackage = new DownloadRequestPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new DownloadRequestPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_DOWNLOAD_CONTENT_REQUEST) {
-                ftPackage = new DownloadContentPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new DownloadContentPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_DOWNLOAD_FINISH) {
-                ftPackage = new DownloadFinishPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new DownloadFinishPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_DOWNLOAD_CHECK_MD5) {
-                ftPackage = new DownloadCheckMD5Package(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new DownloadCheckMD5Package(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_CLIENT_HEARTBEAT_SYNC) {
-                ftPackage = new ClientHeartbeatPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new ClientHeartbeatPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_CLIENT_CONFIG_SYNC) {
-                ftPackage = new ClientConfigSyncPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new ClientConfigSyncPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_CLIENT_BUSSINESS_CONFIG_SYNC) {
-                ftPackage = new ClientBussinessConfigSyncPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new ClientBussinessConfigSyncPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_CLIENT_CONFIG) {
-                ftPackage = new ClientConfigPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
+                ftPackage = new ClientConfigPackage(msg.content().readBytes(package_len - 4));
             } else if (type == PACKAGE_TYPE_CLIENT_BUSSINESS_CONFIG) {
-                ftPackage = new ClientBussinessConfigPackage(((ByteBuf)msg.content()).readBytes(package_len - 4));
-            }
-            else {
+                ftPackage = new ClientBussinessConfigPackage(msg.content().readBytes(package_len - 4));
+            } else {
                 return;
             }
 

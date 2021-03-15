@@ -1,19 +1,15 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package tran.server.io.netty.model;
 
-import com.aww.common.utils.AesUtil;
 import io.netty.buffer.ByteBuf;
+import tran.common.utils.AesUtil;
+
+import java.nio.charset.StandardCharsets;
 
 public class RegisterClientPackage extends FTPackage {
-    private int keyLength = 0;
-    private String key = null;
-    private String mac = null;
-    private int newKeyLength = 0;
-    private String newKey = null;
+    private int keyLength;
+    private String key;
+    private String mac;
+    private final String newKey;
 
     public RegisterClientPackage(ByteBuf message) throws Exception {
         if (message.readableBytes() < 14) {
@@ -28,13 +24,13 @@ public class RegisterClientPackage extends FTPackage {
                 this.key = this.readBufferString(message, this.keyLength);
             }
 
-            this.newKeyLength = message.readInt();
-            if (message.readableBytes() < this.newKeyLength) {
+            int newKeyLength = message.readInt();
+            if (message.readableBytes() < newKeyLength) {
                 throw new Exception("package error");
             } else {
-                byte[] tmp = new byte[this.newKeyLength];
+                byte[] tmp = new byte[newKeyLength];
                 message.readBytes(tmp);
-                this.newKey = new String(AesUtil.aesDecrypt(tmp,AesUtil.KEY), "UTF-8");
+                this.newKey = new String(AesUtil.aesDecrypt(tmp,AesUtil.KEY), StandardCharsets.UTF_8);
                 message.release();
             }
         }

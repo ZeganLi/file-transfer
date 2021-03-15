@@ -1,28 +1,16 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package tran.server.io.netty.model;
 
 import io.netty.buffer.ByteBuf;
 
 public class UploadNewFilePackage extends FTPackage {
     private int clientId;
-    private short isCompressed = 0;
-    private short fileNameLength = 0;
-    //private short newKeyLength = 0;
-    private String fileName = null;
-    private short priority = 5;
-    private long length = 0L;
-    private long compressedLength = 0L;
-    private long totalFileLength = 0L;
-
-    /*public String getNewKey() {
-        return newKey;
-    }*/
-
-    //private String newKey = null;
+    private short isCompressed;
+    private short fileNameLength;
+    private String fileName;
+    private short priority;
+    private long length;
+    private long compressedLength;
+    private long totalFileLength;
 
     public UploadNewFilePackage(ByteBuf message) throws Exception {
         if (message.readableBytes() < 26) {
@@ -42,13 +30,6 @@ public class UploadNewFilePackage extends FTPackage {
                 this.fileName = this.readBufferString(message, this.fileNameLength);
                 message.release();
             }
-
-            /*if (message.readableBytes() < this.newKeyLength) {
-                throw new Exception("package error");
-            } else {
-                this.newKey = this.readBufferString(message, this.newKeyLength);
-                message.release();
-            }*/
         }
     }
 

@@ -1,16 +1,9 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package tran.server.io.netty.model;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-
 import java.io.UnsupportedEncodingException;
-
-import static com.aww.fts.socket.netty.decoder.FTProtocolDecoder.PACKAGE_TYPE_CLIENT_REGISTER_ACK;
+import static tran.server.io.netty.decoder.FTProtocolDecoder.PACKAGE_TYPE_CLIENT_REGISTER_ACK;
 
 public class RegisterClientAckPackage extends FTPackage {
     private short code;
