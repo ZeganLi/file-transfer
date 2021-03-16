@@ -52,7 +52,7 @@ public class RegisterClientBasePackageHandler extends BasePackageHandler {
 
                 ack = new RegisterClientAckPackage();
                 ack.setClientId(client.getId());
-                client.setSecuritykey(registerClientPackage.getKey());
+                client.setSecurityKey(registerClientPackage.getKey());
                 ClientEntity byId = this.clientService.getById(client);
                 ack.setCode(byId.getId());
                 ack.setClientName(client.getClientName());
