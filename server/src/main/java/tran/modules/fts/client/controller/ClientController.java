@@ -24,7 +24,7 @@ import tran.modules.fts.client.service.ClientService;
  * @date 2021-03-15 22:38:14
  */
 @RestController
-@RequestMapping("generator/client")
+@RequestMapping("fts/client")
 public class ClientController {
     @Autowired
     private ClientService clientService;
@@ -33,7 +33,7 @@ public class ClientController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("generator:client:list")
+    @RequiresPermissions("fts:client:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = clientService.queryPage(params);
 
@@ -45,7 +45,7 @@ public class ClientController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("generator:client:info")
+    @RequiresPermissions("fts:client:info")
     public R info(@PathVariable("id") Long id){
 		ClientEntity client = clientService.getById(id);
 
@@ -56,7 +56,7 @@ public class ClientController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("generator:client:save")
+    @RequiresPermissions("fts:client:save")
     public R save(@RequestBody ClientEntity client){
 		clientService.save(client);
 
@@ -67,7 +67,7 @@ public class ClientController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("generator:client:update")
+    @RequiresPermissions("fts:client:update")
     public R update(@RequestBody ClientEntity client){
 		clientService.updateById(client);
 
@@ -78,7 +78,7 @@ public class ClientController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("generator:client:delete")
+    @RequiresPermissions("fts:client:delete")
     public R delete(@RequestBody Long[] ids){
 		clientService.removeByIds(Arrays.asList(ids));
 
