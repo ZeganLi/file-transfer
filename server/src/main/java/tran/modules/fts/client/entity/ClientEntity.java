@@ -52,7 +52,12 @@ public class ClientEntity implements Serializable {
 	/**
 	 * 颁发给终端的安全密钥
 	 */
-	private String securitykey;
+	private String securityKey;
+
+	/**
+	 * 备注
+	 */
+	private String memo;
 	/**
 	 * 创建时间
 	 */

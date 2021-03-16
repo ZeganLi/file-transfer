@@ -13,6 +13,8 @@
         <result property="clientVersion" column="client_version"/>
         <result property="clientStorageDir" column="client_storage_dir"/>
         <result property="createDate" column="create_date"/>
+        <result property="memo" column="memo"/>
+        <result property="securityKey" column="security_key"/>
     </resultMap>
 
 
