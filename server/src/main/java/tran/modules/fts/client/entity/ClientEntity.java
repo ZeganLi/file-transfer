@@ -37,7 +37,7 @@ public class ClientEntity implements Serializable {
 	 */
 	private String clientType;
 	/**
-	 * 终端状态
+	 * 终端状态，启用，禁用，维修，运行等
 	 */
 	private Integer clientStatus;
 	/**
