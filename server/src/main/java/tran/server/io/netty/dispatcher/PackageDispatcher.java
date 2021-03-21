@@ -2,12 +2,11 @@ package tran.server.io.netty.dispatcher;
 
 import io.netty.channel.ChannelHandlerContext;
 import tran.common.utils.SpringContextUtils;
-import tran.server.io.netty.decoder.FTProtocolDecoder;
 import tran.server.io.netty.handler.*;
 import tran.server.io.netty.model.FTPackage;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import static tran.server.io.netty.decoder.PackageTypeCode.*;
 
 public class PackageDispatcher {
     private static final ExecutorService m_ThreadPool = Executors.newCachedThreadPool();
@@ -37,7 +36,7 @@ public class PackageDispatcher {
             //----------------------------------------------------------------
             BasePackageHandler basePackageHandler;
 
-            if (packageType == FTProtocolDecoder.PACKAGE_TYPE_CLIENT_REGISTER) {                      // 终端注册
+            if (packageType == PACKAGE_TYPE_CLIENT_REGISTER) {                      // 终端注册
                 basePackageHandler = (RegisterClientBasePackageHandler) SpringContextUtils.getBean("registerClientPackageHandler");
 //            } else if (packageType == FTProtocolDecoder.PACKAGE_TYPE_UPLOAD_FILE) {               // 上传文件
 //                basePackageHandler = (UploadNewFileBasePackageHandler) SpringContextUtils.getBean("uploadNewFilePackageHandler");
