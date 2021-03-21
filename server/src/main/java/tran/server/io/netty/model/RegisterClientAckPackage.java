@@ -3,7 +3,8 @@ package tran.server.io.netty.model;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import java.io.UnsupportedEncodingException;
-import static tran.server.io.netty.decoder.FTProtocolDecoder.PACKAGE_TYPE_CLIENT_REGISTER_ACK;
+
+import static tran.server.io.netty.decoder.PackageTypeCode.PACKAGE_TYPE_CLIENT_REGISTER_ACK;
 
 public class RegisterClientAckPackage extends FTPackage {
     private Long code;

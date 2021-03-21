@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import tran.server.io.netty.NettyServer;
+import tran.server.io.netty.FtServer;
 
 /**
  * ApplicationListener: 当容器初始化完成之后进行调用
@@ -20,6 +20,6 @@ public class StartFTServer implements ApplicationListener<ContextRefreshedEvent>
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        NettyServer.startServer(port);
+        FtServer.startServer(port);
     }
 }

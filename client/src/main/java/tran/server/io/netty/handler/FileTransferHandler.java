@@ -12,7 +12,9 @@ public class FileTransferHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object message) {
-        PackageDispatcher.dispatch(ctx, message);
+        System.out.println(ctx);
+        System.out.println(message);
+//        PackageDispatcher.dispatch(ctx, message);
     }
 
     @Override

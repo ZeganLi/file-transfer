@@ -5,13 +5,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 /**
+ * FileTransferServer启动类
  * @author mrliz
  */
 @SpringBootApplication
-public class FileTransferServerApplication {
+public class FtsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FileTransferServerApplication.class, args);
+		SpringApplication.run(FtsApplication.class, args);
 	}
 
 }

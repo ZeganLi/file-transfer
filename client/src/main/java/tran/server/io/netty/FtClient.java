@@ -9,26 +9,27 @@ import tran.server.io.netty.decoder.FTProtocolDecoder;
 import tran.server.io.netty.handler.FileTransferHandler;
 
 /**
+ * FileTransferClient  文件传输客户端
  * @author mrliz
  */
 @Slf4j
-public class NettyServer {
+public class FtClient {
     private static final EventLoopGroup group = new NioEventLoopGroup();
 
-    public NettyServer() {
+    public FtClient() {
     }
 
-    public static void startServer(final int port) {
+    public static void startClient(final int port) {
         log.info("-------------------------------------------------------");
-        log.info("----Start File Transfer Server 0.0.0.0:" + port + " ----------");
+        log.info("----Start File Transfer Client 0.0.0.0:" + port + " ----------");
         log.info("-------------------------------------------------------");
 
         new Thread(() -> {
             try {
-                final FileTransferHandler fileTransferHandler = new FileTransferHandler();
                 final FTProtocolDecoder ftProtocolDecoder = new FTProtocolDecoder();
+                final FileTransferHandler fileTransferHandler = new FileTransferHandler();
                 Bootstrap b = new Bootstrap();
-                b.group(NettyServer.group)
+                b.group(FtClient.group)
                         .channel(NioDatagramChannel.class)
                         // 单播：传输到定义的主机组。只传输到指定的机器。
                         .option(ChannelOption.SO_BROADCAST, false)
@@ -44,16 +45,16 @@ public class NettyServer {
             } catch (Exception var7) {
                 var7.printStackTrace();
             } finally {
-                NettyServer.group.shutdownGracefully();
+                FtClient.group.shutdownGracefully();
             }
         }
         ).start();
 
     }
 
-    public static void stopServer() {
+    public static void stopClient() {
         log.info("---------------------------------------------------");
-        log.info("---- Stop File Transfer Server (Netty)       ------");
+        log.info("---- Stop File Transfer Client (Netty)       ------");
         log.info("---------------------------------------------------");
         group.shutdownGracefully();
     }

@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author mrliz
  */
 @SpringBootApplication
-public class FileTransferServerApplication {
+public class FtcApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FileTransferServerApplication.class, args);
+		SpringApplication.run(FtcApplication.class, args);
 	}
 
 }

@@ -7,10 +7,10 @@ server:
   port: 8080
   connection-timeout: 5000ms
   servlet:
-    context-path: /tran-server
-ft:
-  port: 9000
+    context-path: /ftc
 
+ftc:
+  port: 9001
 spring:
   # 环境 dev|test|prod
   profiles:

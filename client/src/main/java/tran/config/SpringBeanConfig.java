@@ -2,7 +2,7 @@ package tran.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import tran.server.io.StartFTServer;
+import tran.server.io.StartFTClient;
 
 /**
  * @Description 加载spring bean的初始化
@@ -13,7 +13,7 @@ import tran.server.io.StartFTServer;
 public class SpringBeanConfig {
 
     @Bean("startFTServer")
-    public StartFTServer startFTServer(){
-        return new StartFTServer();
+    public StartFTClient startFTServer(){
+        return new StartFTClient();
     }
 }

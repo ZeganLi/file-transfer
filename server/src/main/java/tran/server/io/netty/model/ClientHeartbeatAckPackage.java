@@ -4,12 +4,14 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import tran.server.io.netty.decoder.FTProtocolDecoder;
 
+import static tran.server.io.netty.decoder.PackageTypeCode.PACKAGE_TYPE_CLIENT_HEARTBEAT_SYNC_ACK;
+
 public class ClientHeartbeatAckPackage extends FTPackage {
     private int clientId;
     private long syncId;
 
     public ClientHeartbeatAckPackage() {
-        this.setPackageType(FTProtocolDecoder.PACKAGE_TYPE_CLIENT_HEARTBEAT_SYNC_ACK);
+        this.setPackageType(PACKAGE_TYPE_CLIENT_HEARTBEAT_SYNC_ACK);
     }
 
     public ByteBuf getByteBuf() {
