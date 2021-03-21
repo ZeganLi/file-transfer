@@ -30,8 +30,9 @@ public class NettyServer {
                 Bootstrap b = new Bootstrap();
                 b.group(NettyServer.group)
                         .channel(NioDatagramChannel.class)
+                        // 单播：传输到定义的主机组。只传输到指定的机器。
                         .option(ChannelOption.SO_BROADCAST, false)
-                        .option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(60000))
+                        .option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(65535))
                         .handler(new ChannelInitializer<NioDatagramChannel>() {
                             @Override
                             public void initChannel(NioDatagramChannel ch) {

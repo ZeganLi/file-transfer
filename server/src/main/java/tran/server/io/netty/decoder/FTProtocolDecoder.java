@@ -123,6 +123,8 @@ public class FTProtocolDecoder extends MessageToMessageDecoder<DatagramPacket> {
 
             ftPackage.setPackageType(type);
             ftPackage.setRecipient(msg.sender());
+
+            // 增加一个对象到out里，意味着解码器解码消息成功
             out.add(ftPackage);
         } catch (Exception ignored) {
         }
