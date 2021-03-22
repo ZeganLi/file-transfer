@@ -1,6 +1,7 @@
 package tran.server.io;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import tran.server.io.netty.FtClient;
@@ -11,11 +12,14 @@ import tran.server.io.netty.FtClient;
  */
 @Slf4j
 public class StartFTClient implements ApplicationListener<ContextRefreshedEvent> {
+
+    @Value("${ft.port}")
+    private int port;
     public StartFTClient() {
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        FtClient.startClient(12345);
+        FtClient.startClient(port);
     }
 }
