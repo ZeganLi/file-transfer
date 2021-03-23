@@ -11,6 +11,6 @@ public class StopFTClient implements ApplicationListener<ContextClosedEvent> {
     }
 
     public void onApplicationEvent(ContextClosedEvent event) {
-        FtClient.stopClient();
+//        FtClient.stopClient();
     }
 }

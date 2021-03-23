@@ -13,13 +13,13 @@ import tran.server.io.netty.FtClient;
 @Slf4j
 public class StartFTClient implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Value("${ft.port}")
+    @Value("${ftc.port}")
     private int port;
     public StartFTClient() {
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        FtClient.startClient(port);
+//        FtClient.startClient(port);
     }
 }

@@ -12,7 +12,7 @@ import tran.server.io.netty.FtServer;
  */
 @Slf4j
 public class StartFTServer implements ApplicationListener<ContextRefreshedEvent> {
-    @Value("${ft.port}")
+    @Value("${fts.port}")
     private int port;
 
     public StartFTServer() {

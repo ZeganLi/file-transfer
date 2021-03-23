@@ -1,61 +1,89 @@
 package tran.server.io.netty;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.nio.NioDatagramChannel;
 import lombok.extern.slf4j.Slf4j;
-import tran.server.io.netty.decoder.FTProtocolDecoder;
 import tran.server.io.netty.handler.FileTransferHandler;
+
+import java.net.InetSocketAddress;
 
 /**
  * FileTransferClient  文件传输客户端
+ *
  * @author mrliz
  */
 @Slf4j
 public class FtClient {
-    private static final EventLoopGroup group = new NioEventLoopGroup();
+    private String host;
+    private int port;
+
+    private EventLoopGroup group;
+    private Bootstrap bootstrap;
+    private Channel channel;
 
     public FtClient() {
     }
 
-    public static void startClient(final int port) {
-        log.info("-------------------------------------------------------");
-        log.info("----Start File Transfer Client 0.0.0.0:" + port + " ----------");
-        log.info("-------------------------------------------------------");
+    void UdpDataSender(String host, int port) {
+        try {
+            this.host = host;
+            this.port = port;
+            group = new NioEventLoopGroup();
+            bootstrap = new Bootstrap();
+            bootstrap.group(group).channel(NioDatagramChannel.class)
+                    .remoteAddress(host, port)
+                    .handler(new FileTransferHandler());
+            channel = bootstrap.bind(0).sync().channel();
 
-        new Thread(() -> {
-            try {
-                final FTProtocolDecoder ftProtocolDecoder = new FTProtocolDecoder();
-                final FileTransferHandler fileTransferHandler = new FileTransferHandler();
-                Bootstrap b = new Bootstrap();
-                b.group(FtClient.group)
-                        .channel(NioDatagramChannel.class)
-                        // 单播：传输到定义的主机组。只传输到指定的机器。
-                        .option(ChannelOption.SO_BROADCAST, false)
-                        .option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(65535))
-                        .handler(new ChannelInitializer<NioDatagramChannel>() {
-                            @Override
-                            public void initChannel(NioDatagramChannel ch) {
-                                ch.pipeline().addLast(ftProtocolDecoder, fileTransferHandler);
-                            }
-                        });
-
-                b.bind(port).sync().channel().closeFuture().await();
-            } catch (Exception var7) {
-                var7.printStackTrace();
-            } finally {
-                FtClient.group.shutdownGracefully();
-            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        ).start();
-
     }
 
-    public static void stopClient() {
+    public void close() {
+        group.shutdownGracefully();
+    }
+
+    public void send(byte[] data) throws Exception {
+
+        try {
+            ByteBuf byteBuf = Unpooled.buffer(data.length);
+            byteBuf.writeBytes(data);
+
+            channel.writeAndFlush(
+                    new DatagramPacket(
+                            byteBuf,
+                            new InetSocketAddress(
+                                    host, port
+                            )));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void stopClient() {
         log.info("---------------------------------------------------");
         log.info("---- Stop File Transfer Client (Netty)       ------");
         log.info("---------------------------------------------------");
         group.shutdownGracefully();
+    }
+
+    public static void main(String[] args) throws Exception {
+        String host = "127.0.0.1";
+        int port = 9000;
+
+        FtClient udpDataSender = new FtClient();
+        udpDataSender.UdpDataSender(host, port);
+        for (int i = 0; i < 100; i++) {
+            String data = "hello world " + i;
+            udpDataSender.send(data.getBytes());
+            Thread.sleep(2);
+        }
+        udpDataSender.close();
     }
 }
