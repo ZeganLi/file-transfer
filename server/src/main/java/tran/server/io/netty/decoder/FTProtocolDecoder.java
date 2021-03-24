@@ -1,8 +1,11 @@
 package tran.server.io.netty.decoder;
 
+import com.mchange.lang.CharUtils;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.handler.codec.MessageToMessageDecoder;
+import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
 import tran.server.io.netty.model.*;
 import java.util.List;
@@ -23,7 +26,9 @@ public class FTProtocolDecoder extends MessageToMessageDecoder<DatagramPacket> {
     @Override
     protected void decode(ChannelHandlerContext ctx, DatagramPacket msg, List out) {
         int package_len = msg.content().readableBytes();
-
+        ByteBuf content = msg.content();
+        String s = content.toString(CharsetUtil.UTF_8);
+        log.info(s);
         //----------------------------------------------------------------
         // 消息包的头部必定有4个字节，表示消息包的类型和消息包的大小
         //----------------------------------------------------------------

@@ -8,6 +8,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.nio.NioDatagramChannel;
 import lombok.extern.slf4j.Slf4j;
+import tran.server.io.netty.handler.FileTransferHandler;
 
 import java.net.InetSocketAddress;
 
@@ -28,7 +29,7 @@ public class FtClient {
     public FtClient() {
     }
 
-    void UdpDataSender(String host, int port) {
+    public void UdpDataSender(String host, int port) {
         try {
             this.host = host;
             this.port = port;
@@ -38,7 +39,6 @@ public class FtClient {
                     .remoteAddress(host, port)
                     .handler(new FileTransferHandler());
             channel = bootstrap.bind(0).sync().channel();
-
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -48,7 +48,7 @@ public class FtClient {
         group.shutdownGracefully();
     }
 
-    public void send(byte[] data) throws Exception {
+    public void send(byte[] data) {
 
         try {
             ByteBuf byteBuf = Unpooled.buffer(data.length);
@@ -72,17 +72,5 @@ public class FtClient {
         group.shutdownGracefully();
     }
 
-    public static void main(String[] args) throws Exception {
-        String host = "127.0.0.1";
-        int port = 9000;
 
-        FtClient udpDataSender = new FtClient();
-        udpDataSender.UdpDataSender(host, port);
-        for (int i = 0; i < 100; i++) {
-            String data = "hello world " + i;
-            udpDataSender.send(data.getBytes());
-            Thread.sleep(2);
-        }
-        udpDataSender.close();
-    }
 }
