@@ -6,7 +6,8 @@
     <artifactId>file-transfer</artifactId>
     <version>1.0.0</version>
     <modules>
-        <module>server</module>
+        <module>ftc</module>
+        <module>fts</module>
         <module>generator</module>
     </modules>
     <packaging>pom</packaging>
