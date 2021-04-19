@@ -40,7 +40,7 @@ public class FtClient {
                     .handler(new FileTransferHandler());
             channel = bootstrap.bind(0).sync().channel();
         } catch (Exception e) {
-            System.out.println(e);
+            log.error(e.getMessage());
         }
     }
 
